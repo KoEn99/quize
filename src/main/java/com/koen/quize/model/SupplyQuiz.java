@@ -10,7 +10,7 @@ public class SupplyQuiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JoinColumn(name = "answer_id", nullable = false)
+    @JoinColumn(name = "quiz_id", nullable = false)
     private Quiz quiz;
     @ManyToOne
     @JoinColumn(name = "authuser_id", nullable = false)

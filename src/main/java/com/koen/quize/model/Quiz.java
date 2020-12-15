@@ -1,6 +1,7 @@
 package com.koen.quize.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -32,6 +33,7 @@ public class Quiz {
     @ManyToOne
     @JoinColumn(name = "authuser_email", nullable = false)
     private AuthUser authUser;
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     @JoinColumn(name = "subject_id", nullable = false)
     private Subject subject;
@@ -91,7 +93,7 @@ public class Quiz {
     public void setPublish(boolean publish) {
         isPublish = publish;
     }
-    @JsonIgnore
+
     public Subject getSubject() {
         return subject;
     }

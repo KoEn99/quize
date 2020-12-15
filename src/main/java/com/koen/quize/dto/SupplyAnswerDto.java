@@ -6,7 +6,7 @@ import java.util.List;
 
 public class SupplyAnswerDto {
     Question question;
-    List<String> answerList;
+    String answer;
 
     public Question getQuestion() {
         return question;
@@ -16,11 +16,11 @@ public class SupplyAnswerDto {
         this.question = question;
     }
 
-    public List<String> getAnswerList() {
-        return answerList;
+    public String getAnswer() {
+        return answer;
     }
 
-    public void setAnswerList(List<String> answerList) {
-        this.answerList = answerList;
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }

@@ -1,6 +1,7 @@
 package com.koen.quize.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -18,10 +19,13 @@ public class Question {
     private String question;
     @Column(name = "points", nullable = false, length = 5)
     private double points;
+    @Column(name = "settings", nullable = false, length = 5)
+    private int settings;
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Answer> answerList = new ArrayList<>();
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<SupplyAnswer> supplyAnswers = new ArrayList<>();
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne
     @JoinColumn(name = "quiz_id", nullable = false)
     private Quiz quiz;
@@ -49,7 +53,7 @@ public class Question {
     public void setAnswerList(List<Answer> answerList) {
         this.answerList = answerList;
     }
-    @JsonIgnore
+
     public Quiz getQuiz() {
         return quiz;
     }
@@ -72,5 +76,13 @@ public class Question {
 
     public void setSupplyAnswers(List<SupplyAnswer> supplyAnswers) {
         this.supplyAnswers = supplyAnswers;
+    }
+
+    public int getSettings() {
+        return settings;
+    }
+
+    public void setSettings(int settings) {
+        this.settings = settings;
     }
 }
